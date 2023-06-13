@@ -5,29 +5,28 @@
 import sys
 input = sys.stdin.readline
 
-
-def nlistcutcount(list, number):
-    color = nlist[0][0]  # 현재 종이 영역의 색상
-
-    # 현재 종이 영역에 있는 모든 정사각형이 같은 색인지 확인
-    for i in range(row_start, row_end):
-        for j in range(col_start, col_end):
-            if paper[i][j] != color:
-                # 같은 색이 아니라면 종이를 분할하여 재귀 호출
-                half = (row_end - row_start) // 2
-                return (
-                    count_paper(paper, row_start, row_start + half, col_start, col_start + half) +
-                    count_paper(paper, row_start, row_start + half, col_start + half, col_end) +
-                    count_paper(paper, row_start + half, row_end, col_start, col_start + half) +
-                    count_paper(paper, row_start + half, row_end, col_start + half, col_end)
-                )
-
-    # 현재 종이 영역에 있는 모든 정사각형이 같은 색인 경우
-    return 1 if color == 1 else 0
+w_cnt, b_cnt = 0, 0
+def cut_paper(x, y, N, lst):
+    global w_cnt, b_cnt
+    tmp_cnt = 0
+    for i in range(x, x + N):
+        for j in range(y, y + N):
+            if lst[i][j]:
+                tmp_cnt += 1
+    if not tmp_cnt:
+        w_cnt += 1
+    elif tmp_cnt == N**2:
+        b_cnt += 1
+    else:
+        cut_paper(x, y, N // 2, lst)
+        cut_paper(x + N // 2, y, N // 2, lst)
+        cut_paper(x, y + N // 2, N // 2, lst)
+        cut_paper(x + N // 2, y + N // 2, N // 2, lst)
 
 n = int(input())
 nlist = []
 for _ in range(n):
     nlist.append(list(map(int, input().split())))
-
-## 테스트
+cut_paper(0,0,n,nlist)
+print(w_cnt)
+print(b_cnt)
