@@ -1,5 +1,5 @@
 # https://www.acmicpc.net/problem/1931
-# 문제 127 - 회의실 배정
+# 문제 130 - 회의실 배정
 
 # ver_1.0
 import sys
