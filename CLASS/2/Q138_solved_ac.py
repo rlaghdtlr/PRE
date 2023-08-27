@@ -11,27 +11,27 @@ if n == 0:
     print(0)
     exit()
 nlist = []
-avg_n = int(n * 0.15 + 0.5)  # 올림 연산
+und = round(n*0.15) # 평균값 제외할 범위
 for i in range(n):
     x = int(input())
     nlist.append(x)
 nlist.sort()
-print(round(sum(nlist[avg_n:n-avg_n])/(n-(2*avg_n))))
+print(round(sum(nlist[und:n-und])/(n-(2*und))))
 
 # ver_2.0
 # 정답 4사5입을 구현하는 함수를 새로 구성하여 해결
 import sys
 input = sys.stdin.readline
 
-def round2(num):
-    return int(num) + (1 if num - int(num) >= 0.5 else 0)
+def round2(num): # 신규반올림 함수 (5사5입)
+    return int(num + 0.5)
 
 n = int(input())
 if n == 0:
     print(0)
     exit()
 nlist = []
-und = int(n * 0.15 + 0.5)  # 올림 연산
+und = round2(n*0.15)
 for i in range(n):
     x = int(input())
     nlist.append(x)
