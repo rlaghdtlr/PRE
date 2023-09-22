@@ -90,33 +90,33 @@ input = sys.stdin.readline
 
 T = int(input())
 for _ in range(T):
-    N = int(input())
-    Nlist = list(input().split())
-    if N>32:
-        print(0)
-    else:
-        ans = 100000
-        p = []
+	N = int(input())
+	Nlist = list(input().split())
+	if N>32:
+		print(0)
+	else:
+		ans = 100000
+		p = []
 
-        def dfs(start):
-            global ans
-            if len(p)==3:
-                temp = 0
-                for i in range(4):
-                    if(p[0][i]!=p[1][i]):
-                        temp +=1
-                    if(p[1][i]!=p[2][i]):
-                        temp +=1
-                    if(p[2][i]!=p[0][i]):
-                        temp +=1
-                ans = min(ans,temp)
-                return
-            for i in range(start,N):
-                p.append(Nlist[i])
-                dfs(i+1)
-                p.pop()
-        dfs(0)
-        print(ans)
+		def dfs(start):
+			global ans
+			if len(p)==3:
+				temp = 0
+				for i in range(4):
+					if(p[0][i]!=p[1][i]):
+						temp +=1
+					if(p[1][i]!=p[2][i]):
+						temp +=1
+					if(p[2][i]!=p[0][i]):
+						temp +=1
+				ans = min(ans,temp)
+				return
+			for i in range(start,N):
+				p.append(Nlist[i])
+				dfs(i+1)
+				p.pop()
+		dfs(0)
+		print(ans)
 
 # ver_4.0
 # 파이썬 라이브러리 사용
@@ -125,29 +125,29 @@ import sys
 input = sys.stdin.readline
 
 def mbti_dist(a, b):
-    dist = 0
-    for i, j in zip(a, b):
-        if i != j:
-            dist += 1
-    return dist
+	dist = 0
+	for i, j in zip(a, b):
+		if i != j:
+			dist += 1
+	return dist
 
 def find_closest_students(mbti_list):
-    res = 13    # 세 사람의 심리적인 거리
-    case = combinations(Nlist, 3)    # 세 명을 뽑을 조합
-    for a, b, c in case:
-        dist = 0
-        dist += mbti_dist(a, b)
-        dist += mbti_dist(b, c)
-        dist += mbti_dist(a, c)
-        
-        res = min(res, dist)
-    return res
+	res = 13    # 세 사람의 심리적인 거리
+	case = combinations(Nlist, 3)    # 세 명을 뽑을 조합
+	for a, b, c in case:
+		dist = 0
+		dist += mbti_dist(a, b)
+		dist += mbti_dist(b, c)
+		dist += mbti_dist(a, c)
+		
+		res = min(res, dist)
+	return res
 
 T = int(input())
 for _ in range(T):
-    N = int(input())
-    Nlist = input().rstrip().split()
-    if N > 32:
-        print(0)
-    else:
-        print(find_closest_students(Nlist))
+	N = int(input())
+	Nlist = input().rstrip().split()
+	if N > 32:
+		print(0)
+	else:
+		print(find_closest_students(Nlist))
