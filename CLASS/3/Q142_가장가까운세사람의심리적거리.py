@@ -84,7 +84,7 @@
 
 
 # ver_3.0
-# 비둘기집 원리, 브루투포스 알고리즘 사용
+# 비둘기집 원리, 브루투포스 알고리즘 사용 == 그냥 노가다 알고리즘
 import sys
 input = sys.stdin.readline
 
