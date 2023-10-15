@@ -3,7 +3,7 @@
 
 # ver_1.0
 # 오답
-# 방문 리스트에 일반일경우 색약일경우를 동시에 기록하여 출력
+# 방문 리스트에 일반일경우 색약일경우를 각각 기록하여 출력
 from collections import deque
 import sys
 input = sys.stdin.readline
